@@ -1,0 +1,98 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #111318;
+  color: #f5f5f5;
+}
+
+.app {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 32px;
+}
+
+h1 {
+  margin-top: 0;
+  font-size: 40px;
+  text-align: center;
+}
+
+.panel {
+  background: #1c2029;
+  border: 1px solid #303747;
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.panel h2 {
+  margin-top: 0;
+}
+
+.evidence-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.evidence-option {
+  font: inherit;
+  color: #f5f5f5;
+  background: transparent;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  padding: 10px 16px;
+  cursor: pointer;
+}
+
+.evidence-option:hover {
+  background: #2a3040;
+}
+
+.evidence-option[data-state="confirmed"] {
+  border-color: #4ade80;
+  background: rgba(74, 222, 128, 0.12);
+  color: #bbf7d0;
+}
+
+.evidence-option[data-state="ruled-out"] {
+  color: #fca5a5;
+  text-decoration: line-through;
+  text-decoration-color: #fca5a5;
+  opacity: 0.75;
+}
+
+.evidence-option:disabled {
+  color: #6b7280;
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.evidence-option:disabled:hover {
+  background: transparent;
+}
+
+.reset-button {
+  display: block;
+  margin: 24px auto 0;
+  font: inherit;
+  color: #f5f5f5;
+  background: #374151;
+  border: 1px solid #4b5563;
+  border-radius: 999px;
+  padding: 10px 18px;
+  cursor: pointer;
+}
+
+.reset-button:hover {
+  background: #4b5563;
+}
+
+.ghost-list {
+  padding-left: 24px;
+  line-height: 1.8;
+}
