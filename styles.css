@@ -10,7 +10,7 @@ body {
 }
 
 .app {
-  max-width: 900px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 32px;
 }
@@ -93,6 +93,30 @@ h1 {
 }
 
 .ghost-list {
-  padding-left: 24px;
-  line-height: 1.8;
+  list-style: none;
+  padding-left: 0;
+  display: grid;
+  gap: 16px;
+}
+
+.ghost-card {
+  background: #151922;
+  border: 1px solid #303747;
+  border-radius: 14px;
+  padding: 18px;
+}
+
+.ghost-card h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 24px;
+}
+
+.ghost-card p {
+  margin: 8px 0;
+  line-height: 1.5;
+}
+
+.ghost-evidence {
+  color: #bbf7d0;
 }

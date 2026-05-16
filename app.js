@@ -182,11 +182,35 @@ function getConfirmedCount() {
 
 function updateEvidenceAvailability() {
   const confirmedCount = getConfirmedCount();
+  const possibleGhosts = getPossibleGhosts();
+
+  const usefulRemainingEvidence = [];
+
+  if (possibleGhosts.length === 2) {
+    possibleGhosts.forEach(function (ghost) {
+      const missingEvidence = getMissingEvidence(ghost);
+
+      missingEvidence.forEach(function (evidence) {
+        if (!usefulRemainingEvidence.includes(evidence)) {
+          usefulRemainingEvidence.push(evidence);
+        }
+      });
+    });
+  }
 
   evidenceOptions.forEach(function (evidenceOption) {
     const currentState = evidenceOption.dataset.state;
+    const evidenceName = evidenceOption.dataset.evidence;
 
-    if (confirmedCount >= 3 && currentState === "unknown") {
+    const shouldDisableBecauseThreeConfirmed =
+      confirmedCount >= 3 && currentState === "unknown";
+
+    const shouldDisableBecauseNotUseful =
+      possibleGhosts.length === 2 &&
+      currentState === "unknown" &&
+      !usefulRemainingEvidence.includes(evidenceName);
+
+    if (shouldDisableBecauseThreeConfirmed || shouldDisableBecauseNotUseful) {
       evidenceOption.disabled = true;
     } else {
       evidenceOption.disabled = false;
@@ -235,16 +259,50 @@ function getPossibleGhosts() {
   });
 }
 
+function getMissingEvidence(ghost) {
+  const confirmedEvidence = getEvidenceByState("confirmed");
+
+  return ghost.evidence.filter(function (evidence) {
+    return !confirmedEvidence.includes(evidence);
+  });
+}
+
 function renderGhostList() {
   const possibleGhosts = getPossibleGhosts();
 
   ghostList.innerHTML = "";
 
   possibleGhosts.forEach(function (ghost) {
-    const ghostItem = document.createElement("li");
-    ghostItem.textContent = ghost.name;
+    const missingEvidence = getMissingEvidence(ghost);
 
-    ghostList.appendChild(ghostItem);
+    const ghostCard = document.createElement("li");
+    ghostCard.classList.add("ghost-card");
+
+    ghostCard.innerHTML = `
+      <h3>${ghost.name}</h3>
+
+      <p class="ghost-evidence">
+        <strong>Still needed:</strong> ${missingEvidence.join(", ")}
+      </p>
+
+      <p>
+        <strong>Ability:</strong> ${ghost.uniqueAbility}
+      </p>
+
+      <p>
+        <strong>Weakness:</strong> ${ghost.weakness}
+      </p>
+
+      <p>
+        <strong>Behavior:</strong> ${ghost.behavior}
+      </p>
+
+      <p>
+        <strong>Our notes:</strong> ${ghost.ourNotes}
+      </p>
+    `;
+
+    ghostList.appendChild(ghostCard);
   });
 }
 
