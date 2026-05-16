@@ -186,17 +186,15 @@ function updateEvidenceAvailability() {
 
   const usefulRemainingEvidence = [];
 
-  if (possibleGhosts.length === 2) {
-    possibleGhosts.forEach(function (ghost) {
-      const missingEvidence = getMissingEvidence(ghost);
+  possibleGhosts.forEach(function (ghost) {
+    const missingEvidence = getMissingEvidence(ghost);
 
-      missingEvidence.forEach(function (evidence) {
-        if (!usefulRemainingEvidence.includes(evidence)) {
-          usefulRemainingEvidence.push(evidence);
-        }
-      });
+    missingEvidence.forEach(function (evidence) {
+      if (!usefulRemainingEvidence.includes(evidence)) {
+        usefulRemainingEvidence.push(evidence);
+      }
     });
-  }
+  });
 
   evidenceOptions.forEach(function (evidenceOption) {
     const currentState = evidenceOption.dataset.state;
@@ -206,7 +204,6 @@ function updateEvidenceAvailability() {
       confirmedCount >= 3 && currentState === "unknown";
 
     const shouldDisableBecauseNotUseful =
-      possibleGhosts.length === 2 &&
       currentState === "unknown" &&
       !usefulRemainingEvidence.includes(evidenceName);
 
@@ -281,9 +278,13 @@ function renderGhostList() {
     ghostCard.innerHTML = `
       <h3>${ghost.name}</h3>
 
-      <p class="ghost-evidence">
-        <strong>Still needed:</strong> ${missingEvidence.join(", ")}
-      </p>
+      ${
+        missingEvidence.length > 0
+          ? `<p class="ghost-evidence">
+              <strong>Still needed:</strong> ${missingEvidence.join(", ")}
+              </p>`
+          : ""
+      }
 
       <p>
         <strong>Ability:</strong> ${ghost.uniqueAbility}

@@ -10,7 +10,7 @@ body {
 }
 
 .app {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 32px;
 }
@@ -25,8 +25,8 @@ h1 {
   background: #1c2029;
   border: 1px solid #303747;
   border-radius: 16px;
-  padding: 24px;
-  margin-bottom: 24px;
+  padding: 20px;
+  margin-bottom: 20px;
 }
 
 .panel h2 {
@@ -96,6 +96,7 @@ h1 {
   list-style: none;
   padding-left: 0;
   display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 16px;
 }
 
