@@ -130,7 +130,7 @@ const ghosts = [
     uniqueAbility: "Has a significantly higher chance to throw nearby objects with force, using the environment as a weapon.",
     weakness: noneText,
     behavior: "Restless and disruptive, with constant activity that makes its presence hard to ignore. It may not stay in a hunt for long, but it moves with enough pace to make the chaos around it feel much more threatening.",
-    ourNotes: "active as fuck...\n33 ghost events in our first polty match\nnot sure if it's unique, but did the crying child sound effect frequently"
+    ourNotes: "active as fuck... 33 ghost events in our first polty match"
   },
   {
     name: "Revenant",
