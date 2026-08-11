@@ -1,6 +1,3 @@
-const noneText = "None"
-const crucifixWeaknessText = "As a religious entity, it is affected by crucifixes. A well-placed or hand-held crucifix can stop its active hunt and force it to retreat for a short time."
-
 const ghosts = [
     {
         name: "Apparition",
