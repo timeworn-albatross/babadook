@@ -121,11 +121,11 @@ function renderGhostList() {
       }
 
       <p>
-        <strong>Ability:</strong> ${ghost.uniqueAbility}
+        <strong>Weakness:</strong> ${ghost.weakness}
       </p>
 
       <p>
-        <strong>Weakness:</strong> ${ghost.weakness}
+        <strong>Ability:</strong> ${ghost.uniqueAbility}
       </p>
 
       <p>
