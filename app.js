@@ -131,10 +131,6 @@ function renderGhostList() {
       <p>
         <strong>Behavior:</strong> ${ghost.behavior}
       </p>
-
-      <p>
-        <strong>Our notes:</strong> ${ghost.ourNotes}
-      </p>
     `;
 
     ghostList.appendChild(ghostCard);
